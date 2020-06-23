@@ -12,10 +12,30 @@
 (() => {
     async function displayxmen(){
         let api = await fetch("http://localhost:3000/heroes");
-        let xList = await Response.json();
+        let xList = await api.json();
         let userId = document.getElementById("hero-id").value;
-        let xmen = xList[userId];
-
+        let xmen = xList[userId-1];
+        console.log(userId);
+        console.log(xmen);
+        console.log(xList.length);
+        if(userId<=xList.length){
+            document.getElementById("target").innerHTML = 
+        
+                `<li class="hero">
+                    <h4 class="title">
+                        <strong class="name">${xmen.name}</strong>
+                        <em class="alter-ego">${xmen.alterEgo}</em>
+                    </h4>
+                    <p class="powers">${xmen.abilities}</p>
+                </li>`
+        } else {
+            console.error("id trop grand");
+        }
 
     }
+    document.getElementById("run").addEventListener("click", ()=>{
+        
+        displayxmen();
+
+    })
 })();

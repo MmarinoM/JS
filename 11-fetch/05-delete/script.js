@@ -10,5 +10,25 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+    
+    async function deleteXmen(){
+        
+        let api = await fetch("http://localhost:3000/heroes");
+        let xList = await api.json();
+        let idUserDelete = document.getElementById("hero-id").value;
+        
+        if(idUserDelete < xList.length){
+            xList.splice(idUserDelete-1, 1);
+        } 
+        else{
+            console.error("ID trop grand");
+        }
+
+        console.table(xList);
+        
+    }
+
+    document.getElementById("run").addEventListener("click", ()=>{
+        deleteXmen();
+    });
 })();
