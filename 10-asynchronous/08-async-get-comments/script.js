@@ -10,5 +10,26 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+    (() => {
+        async function test(){
+            
+            try{
+                window.lib.getPosts();
+            }
+            
+            catch(error){
+                console.error(error);
+            }
+    
+            let finalTable = await window.lib.getPosts();
+            
+            for (let article of finalTable){
+                article.comment = await window.lib.getComments(article.id);
+            }
+            console.log(finalTable);
+        }
+        document.getElementById("run").addEventListener("click",function(){
+            test();
+        })
+    })();
 })();

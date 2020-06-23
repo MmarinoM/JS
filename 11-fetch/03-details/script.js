@@ -10,5 +10,12 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+    async function displayxmen(){
+        let api = await fetch("http://localhost:3000/heroes");
+        let xList = await Response.json();
+        let userId = document.getElementById("hero-id").value;
+        let xmen = xList[userId];
+
+
+    }
 })();

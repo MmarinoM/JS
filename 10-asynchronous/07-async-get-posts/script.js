@@ -12,13 +12,20 @@
 (() => {
     async function test(){
         
-        window.lib.getPosts().then((resultat) => {
-             let table = resultat;
-        });
+        try{
+            window.lib.getPosts();
+        }
+        
+        catch(error){
+            console.error(error);
+        }
 
-        let result = await table;
+        let finalTable = await window.lib.getPosts();
+        console.log(finalTable);
 
-        console.log(result);
     }
-    test();
+    document.getElementById("run").addEventListener("click",function(){
+        test();
+    })
 })();
+

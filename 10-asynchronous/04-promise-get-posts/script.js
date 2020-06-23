@@ -12,9 +12,15 @@
 (() => {
     
     document.getElementById("run").addEventListener("click",function(){
-        window.lib.getPosts().then((resultat) => {
+        window.lib.getPosts()
+            .then((resultat) => {
             console.log(resultat);
-        });
+            })
+            .catch(error => console.error(error));
+        
+        
+        
+         
         
         
     })
